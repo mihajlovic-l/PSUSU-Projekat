@@ -1,0 +1,153 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|e:\\fakultet\\8. semestar\\psusu\\projekat\\psusuproject\\scadawpf\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|solutionrelative:scadawpf\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|e:\\fakultet\\8. semestar\\psusu\\projekat\\psusuproject\\scadawpf\\views\\addwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|solutionrelative:scadawpf\\views\\addwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|e:\\fakultet\\8. semestar\\psusu\\projekat\\psusuproject\\scadawpf\\views\\addwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|solutionrelative:scadawpf\\views\\addwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{024884F0-496F-4426-A0CE-45FF39AE24A6}|DataConcentrator\\DataConcentrator.csproj|E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\dataconcentrator\\tagmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{024884F0-496F-4426-A0CE-45FF39AE24A6}|DataConcentrator\\DataConcentrator.csproj|solutionrelative:dataconcentrator\\tagmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\scadawpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|solutionrelative:scadawpf\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\scadawpf\\views\\tracesettingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|ScadaWPF\\ScadaWPF.csproj|solutionrelative:scadawpf\\views\\tracesettingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{024884F0-496F-4426-A0CE-45FF39AE24A6}|DataConcentrator\\DataConcentrator.csproj|E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\dataconcentrator\\plc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{024884F0-496F-4426-A0CE-45FF39AE24A6}|DataConcentrator\\DataConcentrator.csproj|solutionrelative:dataconcentrator\\plc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{024884F0-496F-4426-A0CE-45FF39AE24A6}|DataConcentrator\\DataConcentrator.csproj|E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\dataconcentrator\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{024884F0-496F-4426-A0CE-45FF39AE24A6}|DataConcentrator\\DataConcentrator.csproj|solutionrelative:dataconcentrator\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\App.xaml.cs",
+              "RelativeDocumentMoniker": "ScadaWPF\\App.xaml.cs",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\App.xaml.cs",
+              "RelativeToolTip": "ScadaWPF\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T17:29:15.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddWindow.xaml.cs",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\AddWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ScadaWPF\\Views\\AddWindow.xaml.cs",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\AddWindow.xaml.cs",
+              "RelativeToolTip": "ScadaWPF\\Views\\AddWindow.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T17:11:59.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TagManager.cs",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\DataConcentrator\\TagManager.cs",
+              "RelativeDocumentMoniker": "DataConcentrator\\TagManager.cs",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\DataConcentrator\\TagManager.cs",
+              "RelativeToolTip": "DataConcentrator\\TagManager.cs",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAwwPcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T16:39:03.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddWindow.xaml",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\AddWindow.xaml",
+              "RelativeDocumentMoniker": "ScadaWPF\\Views\\AddWindow.xaml",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\AddWindow.xaml",
+              "RelativeToolTip": "ScadaWPF\\Views\\AddWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-03T16:37:43.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ScadaWPF\\Views\\MainWindow.xaml",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "ScadaWPF\\Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-03T16:37:45.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TraceSettingsWindow.xaml",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\TraceSettingsWindow.xaml",
+              "RelativeDocumentMoniker": "ScadaWPF\\Views\\TraceSettingsWindow.xaml",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\ScadaWPF\\Views\\TraceSettingsWindow.xaml",
+              "RelativeToolTip": "ScadaWPF\\Views\\TraceSettingsWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-07-03T16:36:02.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PLC.cs",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\DataConcentrator\\PLC.cs",
+              "RelativeDocumentMoniker": "DataConcentrator\\PLC.cs",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\DataConcentrator\\PLC.cs",
+              "RelativeToolTip": "DataConcentrator\\PLC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T16:31:50.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Logger.cs",
+              "DocumentMoniker": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\DataConcentrator\\Logger.cs",
+              "RelativeDocumentMoniker": "DataConcentrator\\Logger.cs",
+              "ToolTip": "E:\\Fakultet\\8. semestar\\PSUSU\\Projekat\\PSUSUproject\\DataConcentrator\\Logger.cs",
+              "RelativeToolTip": "DataConcentrator\\Logger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-03T16:23:15.304Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
