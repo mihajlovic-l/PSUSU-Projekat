@@ -3,9 +3,9 @@ using System.Data.Entity;
 namespace DataConcentrator
 {
     // ─── Entity Framework DbContext ───────────────────────────────────────────
-    // Singleton pattern keeps one shared connection for the app's lifetime.
-    // EF will create the database on first use (Code-First).
-    // Three tables as required by the spec: Tags, Alarms, ActivatedAlarms.
+    // Using one DbSet per concrete tag type instead of TPH through the base Tag.
+    // This is simpler and avoids EF ObjectStateEntry tracking issues with
+    // abstract base classes and discriminator columns.
     public class ContextClass : DbContext
     {
         private static ContextClass instance;
@@ -20,26 +20,14 @@ namespace DataConcentrator
             }
         }
 
-        // Tags table — stores all AI/AO/DI/DO rows (Table-Per-Hierarchy via TagType)
-        public DbSet<Tag>            Tags            { get; set; }
+        // One DbSet per concrete tag type — each maps to its own table
+        public DbSet<AnalogInput>    AnalogInputs    { get; set; }
+        public DbSet<AnalogOutput>   AnalogOutputs   { get; set; }
+        public DbSet<DigitalInput>   DigitalInputs   { get; set; }
+        public DbSet<DigitalOutput>  DigitalOutputs  { get; set; }
 
-        // Alarms table — alarm definitions linked to AI tags
+        // Alarms and audit log
         public DbSet<Alarm>          Alarms          { get; set; }
-
-        // ActivatedAlarms table — audit log of every alarm event
         public DbSet<ActivatedAlarm> ActivatedAlarms { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            // TPH (Table-Per-Hierarchy): all tag subclasses share the Tags table.
-            // EF uses the TagType string column to know which subclass to instantiate.
-            modelBuilder.Entity<Tag>()
-                .Map<AnalogInput>  (m => m.Requires("TagType").HasValue("AI"))
-                .Map<AnalogOutput> (m => m.Requires("TagType").HasValue("AO"))
-                .Map<DigitalInput> (m => m.Requires("TagType").HasValue("DI"))
-                .Map<DigitalOutput>(m => m.Requires("TagType").HasValue("DO"));
-
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }
