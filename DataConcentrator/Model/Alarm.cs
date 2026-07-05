@@ -61,4 +61,19 @@ namespace DataConcentrator
         public string Message     { get; set; }   // alarm message at the time of firing
         public DateTime Timestamp { get; set; }   // when it happened
     }
+
+    // ─── Tag Value Record ─────────────────────────────────────────────────────
+    // Written to the DB every time an AI tag's value changes (after deadband
+    // filtering). GenerateReport() queries this table to find values that fall
+    // in the range (HighLimit + LowLimit) / 2 ± 5.
+    public class TagValueRecord
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        public string   TagName   { get; set; }
+        public double   Value     { get; set; }
+        public DateTime Timestamp { get; set; }
+    }
 }

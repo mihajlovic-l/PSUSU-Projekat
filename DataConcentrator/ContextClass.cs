@@ -29,5 +29,8 @@ namespace DataConcentrator
         // Alarms and audit log
         public DbSet<Alarm>          Alarms          { get; set; }
         public DbSet<ActivatedAlarm> ActivatedAlarms { get; set; }
+
+        // History of AI tag values — used for report generation
+        public DbSet<TagValueRecord> TagValueRecords { get; set; }
     }
 }
