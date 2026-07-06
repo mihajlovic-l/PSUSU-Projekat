@@ -1,0 +1,119 @@
+<Window x:Class="ScadaWPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:conv="clr-namespace:ScadaWPF.Converters"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="SCADA System" Height="700" Width="1400"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{materialDesign:MaterialDesignFont}">
+
+    <Window.Resources>
+        <conv:AlarmStateToColorConverter x:Key="AlarmColorConverter"/>
+        <conv:BoolToYesNoConverter       x:Key="BoolYesNo"/>
+    </Window.Resources>
+
+    <DockPanel>
+
+        <!-- ── Top toolbar ──────────────────────────────────────────────────── -->
+        <materialDesign:ColorZone DockPanel.Dock="Top" Mode="Standard"
+                                   materialDesign:ElevationAssist.Elevation="Dp2"
+                                   Padding="16,10">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                <TextBlock Text="SCADA System" FontSize="18" FontWeight="Medium"
+                           Foreground="{DynamicResource PrimaryHueMidBrush}"
+                           VerticalAlignment="Center" Margin="0,0,24,0"/>
+
+                <!-- Tag management -->
+                <Button Content="＋ Add Tag / Alarm"
+                        Style="{StaticResource PrimaryButton}"
+                        Click="BtnAdd_Click" Margin="0,0,8,0"/>
+                <Button Content="✎ Update Tag"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="BtnUpdateTag_Click" Margin="0,0,8,0"/>
+                <Button Content="✕ Remove Tag"
+                        Style="{StaticResource DangerButton}"
+                        Click="BtnRemoveTag_Click" Margin="0,0,16,0"/>
+
+                <Separator Style="{StaticResource MaterialDesignSeparator}"
+                           Width="1" Margin="0,0,16,0"/>
+
+                <!-- Write to output -->
+                <TextBox x:Name="TxtWriteValue" Width="140" Margin="0,0,8,0"
+                         VerticalAlignment="Center"
+                         materialDesign:HintAssist.Hint="Value"
+                         materialDesign:TextFieldAssist.HasClearButton="True"
+                         ToolTip="Enter value to write to the selected output tag"/>
+                <Button Content="Write to Tag"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="BtnWrite_Click" Margin="0,0,16,0"/>
+
+                <!-- Scan toggle -->
+                <Button Content="Toggle Scan"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="BtnToggleScan_Click" Margin="0,0,16,0"/>
+
+                <Separator Style="{StaticResource MaterialDesignSeparator}"
+                           Width="1" Margin="0,0,16,0"/>
+
+                <!-- Report, Details, Trace settings -->
+                <Button Content="📄 Report"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="BtnReport_Click" Margin="0,0,8,0"/>
+                <Button Content="📋 Details"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="BtnDetails_Click" Margin="0,0,8,0"/>
+                <Button Content="⚙ Trace Settings"
+                        Style="{StaticResource SecondaryButton}"
+                        Click="BtnTrace_Click"/>
+            </StackPanel>
+        </materialDesign:ColorZone>
+
+        <!-- ── Main tag list (fills the remaining area) ───────────────────────── -->
+        <materialDesign:Card Margin="12" UniformCornerRadius="4"
+                              materialDesign:ElevationAssist.Elevation="Dp2">
+            <DockPanel Margin="16,12">
+                <TextBlock DockPanel.Dock="Top" Text="Tags" FontSize="15"
+                           FontWeight="Medium" Margin="0,0,0,10"/>
+
+                <ListView x:Name="TagList" ItemsSource="{Binding Tags}"
+                          SelectedItem="{Binding SelectedTag}"
+                          FontSize="12"
+                          materialDesign:DataGridAssist.ColumnHeaderPadding="10,6,10,6"
+                          PreviewMouseDown="TagList_PreviewMouseDown">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource CompactGridViewColumnHeader}">
+                            <GridViewColumn Header="Name"        Width="100"
+                                            DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Type"        Width="80"
+                                            DisplayMemberBinding="{Binding TagType}"/>
+                            <GridViewColumn Header="Description" Width="180"
+                                            DisplayMemberBinding="{Binding Description}"/>
+                            <GridViewColumn Header="I/O Address" Width="105"
+                                            DisplayMemberBinding="{Binding IOAddress}"/>
+                            <GridViewColumn Header="Scan (ms)"   Width="100"
+                                            DisplayMemberBinding="{Binding ScanTime}"/>
+                            <GridViewColumn Header="Scanning"    Width="100"
+                                            DisplayMemberBinding="{Binding ScanEnabled,
+                                                Converter={StaticResource BoolYesNo}}"/>
+                            <GridViewColumn Header="Low"         Width="70"
+                                            DisplayMemberBinding="{Binding LowLimit}"/>
+                            <GridViewColumn Header="High"        Width="70"
+                                            DisplayMemberBinding="{Binding HighLimit}"/>
+                            <GridViewColumn Header="Units"       Width="70"
+                                            DisplayMemberBinding="{Binding Units}"/>
+                            <GridViewColumn Header="Value"       Width="85"
+                                            DisplayMemberBinding="{Binding CurrentValue}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </DockPanel>
+        </materialDesign:Card>
+
+    </DockPanel>
+</Window>

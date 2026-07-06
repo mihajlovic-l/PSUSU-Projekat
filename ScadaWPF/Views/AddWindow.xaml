@@ -1,0 +1,123 @@
+<Window x:Class="ScadaWPF.Views.AddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Add Tag / Alarm" Height="560" Width="440"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        FontFamily="{materialDesign:MaterialDesignFont}">
+
+    <DockPanel Margin="24">
+
+        <!-- ── Type selector ──────────────────────────────────────────────────── -->
+        <ComboBox DockPanel.Dock="Top" x:Name="CboType"
+                  materialDesign:HintAssist.Hint="Type"
+                  SelectionChanged="CboType_SelectionChanged"
+                  SelectedIndex="0" Margin="0,0,0,16">
+            <ComboBoxItem Content="AI — Analog Input"/>
+            <ComboBoxItem Content="AO — Analog Output"/>
+            <ComboBoxItem Content="DI — Digital Input"/>
+            <ComboBoxItem Content="DO — Digital Output"/>
+            <ComboBoxItem Content="Alarm"/>
+        </ComboBox>
+
+        <!-- ── Bottom buttons ─────────────────────────────────────────────────── -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Add" Style="{StaticResource PrimaryButton}"
+                    Click="BtnAdd_Click" Width="90"/>
+            <Button Content="Cancel" Style="{StaticResource SecondaryButton}"
+                    Click="BtnCancel_Click" Width="90" Margin="8,0,0,0"/>
+        </StackPanel>
+
+        <!-- ── Scrollable form area ────────────────────────────────────────────── -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="FormPanel" Margin="0,0,0,8">
+
+                <!-- ═══ Shared fields (all tag types) ════════════════════════ -->
+                <StackPanel x:Name="PanelShared">
+                    <TextBox x:Name="TxtName"
+                             materialDesign:HintAssist.Hint="Tag Name *"
+                             Margin="0,0,0,18"/>
+
+                    <TextBox x:Name="TxtDescription"
+                             materialDesign:HintAssist.Hint="Description"
+                             Margin="0,0,0,18"/>
+
+                    <!-- I/O Address is populated in code-behind based on tag type,
+                         showing only valid + available addresses -->
+                    <ComboBox x:Name="CboAddress"
+                              materialDesign:HintAssist.Hint="I/O Address *"
+                              Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ═══ Input-tag fields (AI + DI) ═══════════════════════════ -->
+                <StackPanel x:Name="PanelInput" Visibility="Visible">
+                    <TextBox x:Name="TxtScanTime" Text="1000"
+                             materialDesign:HintAssist.Hint="Scan Time (ms) *"
+                             Margin="0,0,0,18"/>
+
+                    <CheckBox x:Name="ChkScanEnabled" Content="Scan Enabled"
+                              IsChecked="True" Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ═══ Analog fields (AI + AO) ══════════════════════════════ -->
+                <StackPanel x:Name="PanelAnalog" Visibility="Visible">
+                    <TextBox x:Name="TxtLow" Text="0"
+                             materialDesign:HintAssist.Hint="Low Limit"
+                             Margin="0,0,0,18"/>
+
+                    <TextBox x:Name="TxtHigh" Text="100"
+                             materialDesign:HintAssist.Hint="High Limit"
+                             Margin="0,0,0,18"/>
+
+                    <TextBox x:Name="TxtUnits"
+                             materialDesign:HintAssist.Hint="Units"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ═══ AI-only fields (Deadband + Hysteresis) ═══════════════ -->
+                <StackPanel x:Name="PanelAiOnly" Visibility="Visible">
+                    <TextBox x:Name="TxtDeadband" Text="0"
+                             materialDesign:HintAssist.Hint="Deadband"
+                             Margin="0,0,0,18"/>
+
+                    <TextBox x:Name="TxtHysteresis" Text="0"
+                             materialDesign:HintAssist.Hint="Hysteresis"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ═══ Output initial value (AO + DO) ═══════════════════════ -->
+                <StackPanel x:Name="PanelOutput" Visibility="Collapsed">
+                    <TextBox x:Name="TxtInitialValue" Text="0"
+                             materialDesign:HintAssist.Hint="Initial Value"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ═══ Alarm-specific fields ═════════════════════════════════ -->
+                <StackPanel x:Name="PanelAlarm" Visibility="Collapsed">
+                    <ComboBox x:Name="CboAlarmTag"
+                              materialDesign:HintAssist.Hint="AI Tag Name *"
+                              Margin="0,0,0,18"/>
+
+                    <TextBox x:Name="TxtAlarmLimit"
+                             materialDesign:HintAssist.Hint="Limit Value *"
+                             Margin="0,0,0,18"/>
+
+                    <ComboBox x:Name="CboAlarmDir" SelectedIndex="0" Margin="0,0,0,18">
+                        <ComboBoxItem Content="High — triggers when value exceeds limit"/>
+                        <ComboBoxItem Content="Low — triggers when value drops below limit"/>
+                    </ComboBox>
+
+                    <TextBox x:Name="TxtAlarmMsg"
+                             materialDesign:HintAssist.Hint="Alarm Message"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </DockPanel>
+</Window>

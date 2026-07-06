@@ -384,16 +384,21 @@ namespace DataConcentrator
                                 ai.CurrentValue = raw;
                                 lastAnalogValue = raw;
 
-                                // Persist every accepted value for report generation
+                                // Use a fresh local context per save — the shared
+                                // singleton DbContext is not thread-safe across
+                                // multiple simultaneous scan threads
                                 try
                                 {
-                                    ContextClass.Instance.TagValueRecords.Add(new TagValueRecord
+                                    using (var ctx = new ContextClass())
                                     {
-                                        TagName   = ai.Name,
-                                        Value     = raw,
-                                        Timestamp = DateTime.Now
-                                    });
-                                    ContextClass.Instance.SaveChanges();
+                                        ctx.TagValueRecords.Add(new TagValueRecord
+                                        {
+                                            TagName   = ai.Name,
+                                            Value     = raw,
+                                            Timestamp = DateTime.Now
+                                        });
+                                        ctx.SaveChanges();
+                                    }
                                 }
                                 catch (Exception ex)
                                 {
@@ -445,8 +450,11 @@ namespace DataConcentrator
 
                     try
                     {
-                        ContextClass.Instance.ActivatedAlarms.Add(record);
-                        ContextClass.Instance.SaveChanges();
+                        using (var ctx = new ContextClass())
+                        {
+                            ctx.ActivatedAlarms.Add(record);
+                            ctx.SaveChanges();
+                        }
                     }
                     catch (Exception ex)
                     {
