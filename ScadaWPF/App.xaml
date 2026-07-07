@@ -8,7 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!-- ── Material Design palette + control theme ───────────────────── -->
                 <!-- PrimaryColor "Blue" keeps the app close to the previous #1A73E8 accent -->
-                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Blue" SecondaryColor="Amber"/>
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Blue" SecondaryColor="Amber"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 

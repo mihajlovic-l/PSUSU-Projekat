@@ -20,9 +20,9 @@ namespace ScadaWPF.Converters
             {
                 switch (state)
                 {
-                    case AlarmState.Active:       return new SolidColorBrush(Color.FromRgb(255, 205, 210)); // light red
-                    case AlarmState.Acknowledged: return new SolidColorBrush(Color.FromRgb(255, 249, 196)); // light yellow
-                    default:                      return Brushes.Transparent;
+                    case AlarmState.Active:         return new SolidColorBrush(Color.FromRgb(0x5C, 0x2B, 0x2B)); // dark red   (#5C2B2B)
+                    case AlarmState.Acknowledged:   return new SolidColorBrush(Color.FromRgb(0x5C, 0x4A, 0x1E)); // dark amber (#5C4A1E)
+                    default:                        return Brushes.Transparent;
                 }
             }
             return Brushes.Transparent;

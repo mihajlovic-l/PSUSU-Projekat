@@ -1,0 +1,109 @@
+<Window x:Class="ScadaWPF.Views.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Update" Height="520" Width="440"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        FontFamily="{materialDesign:MaterialDesignFont}">
+
+    <DockPanel Margin="24">
+
+        <!-- ── Header showing what is being edited ────────────────────────────── -->
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+            <TextBlock x:Name="TxtHeader" FontSize="16" FontWeight="Medium"/>
+        </StackPanel>
+
+        <!-- ── Buttons ────────────────────────────────────────────────────────── -->
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,16,0,0">
+            <Button Content="Save" Style="{StaticResource PrimaryButton}"
+                    Click="BtnSave_Click" Width="90"/>
+            <Button Content="Cancel" Style="{StaticResource SecondaryButton}"
+                    Click="BtnCancel_Click" Width="90" Margin="8,0,0,0"/>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+
+                <!-- ══ Shared tag fields (Name shown read-only, not editable) ══ -->
+                <StackPanel x:Name="PanelTagShared" Visibility="Collapsed">
+                    <Label Content="Tag Name (read-only)" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtName" IsReadOnly="True"
+                             Margin="0,0,0,18"/>
+
+                    <Label Content="Description"/>
+                    <TextBox x:Name="TxtDescription"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ══ Input tag fields (AI + DI) ══════════════════════════════ -->
+                <StackPanel x:Name="PanelInput" Visibility="Collapsed">
+                    <Label Content="Scan Time (ms) *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtScanTime"
+                             Margin="0,0,0,18"/>
+
+                    <CheckBox x:Name="ChkScanEnabled" Content="Scan Enabled"
+                              Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ══ Analog fields (AI + AO) ══════════════════════════════════ -->
+                <StackPanel x:Name="PanelAnalog" Visibility="Collapsed">
+                    <Label Content="Low Limit *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtLow"
+                             Margin="0,0,0,18"/>
+
+                    <Label Content="High Limit *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtHigh"
+                             Margin="0,0,0,18"/>
+
+                    <Label Content="Units"/>
+                    <TextBox x:Name="TxtUnits"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ══ AI-only fields ═══════════════════════════════════════════ -->
+                <StackPanel x:Name="PanelAiOnly" Visibility="Collapsed">
+                    <Label Content="Deadband *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtDeadband"
+                             Margin="0,0,0,18"/>
+
+                    <Label Content="Hysteresis *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtHysteresis"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ══ Output initial value (AO + DO) ══════════════════════════ -->
+                <StackPanel x:Name="PanelOutput" Visibility="Collapsed">
+                    <Label Content="Initial Value *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtInitialValue"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+                <!-- ══ Alarm fields ═════════════════════════════════════════════ -->
+                <StackPanel x:Name="PanelAlarm" Visibility="Collapsed">
+                    <Label Content="AI Tag Name *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtAlarmTag" IsReadOnly="True"
+                             Margin="0,0,0,18"/>
+
+                    <Label Content="Limit Value *" FontWeight="SemiBold"/>
+                    <TextBox x:Name="TxtAlarmLimit"
+                             Margin="0,0,0,18"/>
+
+                    <ComboBox x:Name="CboAlarmDir" SelectedIndex="0"
+                              Margin="0,0,0,18">
+                        <ComboBoxItem Content="High — triggers when value exceeds limit"/>
+                        <ComboBoxItem Content="Low — triggers when value drops below limit"/>
+                    </ComboBox>
+
+                    <Label Content="Alarm Message"/>
+                    <TextBox x:Name="TxtAlarmMsg"
+                             Margin="0,0,0,18"/>
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
