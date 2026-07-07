@@ -11,13 +11,13 @@
 
     <DockPanel Margin="24">
 
-        <!-- ── Header ─────────────────────────────────────────────────────────── -->
+        <!-- Zaglavlje prozora -->
         <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
             <TextBlock Text="Log Trace Settings"
                        FontSize="17" FontWeight="Medium"/>
         </StackPanel>
 
-        <!-- ── Traceword display ───────────────────────────────────────────────── -->
+        <!-- Prikaz traceword-a -->
         <materialDesign:Card DockPanel.Dock="Bottom" Padding="16,12" Margin="0,16,0,0"
                               UniformCornerRadius="4"
                               materialDesign:ElevationAssist.Elevation="Dp1">
@@ -55,7 +55,7 @@
             </Grid>
         </materialDesign:Card>
 
-        <!-- ── Checkboxes ─────────────────────────────────────────────────────── -->
+        <!-- Lista prekidača za pojedinačne kategorije logovanja -->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
 
@@ -219,7 +219,7 @@
                     </Grid>
                 </materialDesign:Card>
 
-                <!-- Bit 7 — recommended always on, kept visually distinct via a warning-tinted card -->
+                <!-- Bit 7 — greške/izuzeci (preporučeno uvek uključeno) -->
                 <materialDesign:Card Padding="12,8" Margin="0,0,0,8" UniformCornerRadius="4"
                                       materialDesign:ElevationAssist.Elevation="Dp1">
                     <Grid>

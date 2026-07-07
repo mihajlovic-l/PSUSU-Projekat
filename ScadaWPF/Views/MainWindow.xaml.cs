@@ -76,7 +76,7 @@ namespace ScadaWPF.Views
             _vm.GenerateReport();
         }
 
-        // ── Details window — opens for the currently selected tag ─────────────
+        // Otvara prozor sa detaljima za izabrani tag
         private void BtnDetails_Click(object sender, RoutedEventArgs e)
         {
             if (_vm.SelectedTag == null)
@@ -96,7 +96,7 @@ namespace ScadaWPF.Views
             win.ShowDialog();
         }
 
-        // ── Click on empty space in tag list → deselect ───────────────────────
+        // Klik na prazno mesto u listi tagova -> poništi selekciju
         private void TagList_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             // HitTest the click point — if it didn't land on a ListViewItem, deselect

@@ -5,9 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataConcentrator
 {
-    // ─── Base Tag ───────────────────────────────────────────────────────────────
-    // All four tag types inherit from this. INotifyPropertyChanged lets WPF
-    // data-bindings react to value changes automatically.
+    // Osnovni Tag: zajedničke osobine svih tipova tagova.
+    // INotifyPropertyChanged omogućava automatsko osvežavanje UI-a.
     public class Tag : INotifyPropertyChanged
     {
         private string name;
@@ -46,15 +45,15 @@ namespace DataConcentrator
         #endregion
     }
 
-    // ─── Input Tags (share scan-related fields) ──────────────────────────────
+    // Ulazni tagovi: dele polja vezana za skeniranje
     public abstract class InputTag : Tag
     {
         private bool scanEnabled = true;
 
-        // Scan interval in milliseconds
+        // Interval skeniranja u milisekundama
         public int ScanTime { get; set; } = 1000;
 
-        // When false the background thread skips reading this tag
+        // Ako je false, nit za skeniranje preskače čitanje
         public bool ScanEnabled
         {
             get { return scanEnabled; }
@@ -62,7 +61,7 @@ namespace DataConcentrator
         }
     }
 
-    // ─── Analog Input ────────────────────────────────────────────────────────
+    // Analogni ulaz
     public class AnalogInput : InputTag
     {
         private double currentValue;
@@ -71,14 +70,13 @@ namespace DataConcentrator
         public double HighLimit { get; set; } = 100;
         public string Units     { get; set; } = "";
 
-        // Minimum change required before the value is considered updated
+        // Minimalna promena koja se smatra ažuriranjem (deadband)
         public double Deadband   { get; set; } = 0;
 
-        // Amount the value must exceed an alarm threshold before the alarm fires
-        // (prevents rapid on/off toggling near the boundary)
+        // Histereza: dodatna margina da se spreči brzo uključenje/isključenje
         public double Hysteresis { get; set; } = 0;
 
-        // Live value — changing this triggers property-change events so the UI updates
+        // Trenutna vrednost taga; promena emituje događaj za UI
         public double CurrentValue
         {
             get { return currentValue; }
@@ -86,7 +84,7 @@ namespace DataConcentrator
         }
     }
 
-    // ─── Analog Output ───────────────────────────────────────────────────────
+    // Analogni izlaz
     public class AnalogOutput : Tag
     {
         public double LowLimit     { get; set; } = 0;
@@ -102,7 +100,7 @@ namespace DataConcentrator
         }
     }
 
-    // ─── Digital Input ───────────────────────────────────────────────────────
+    // Digitalni ulaz
     public class DigitalInput : InputTag
     {
         private bool currentValue;
@@ -113,7 +111,7 @@ namespace DataConcentrator
         }
     }
 
-    // ─── Digital Output ──────────────────────────────────────────────────────
+    // Digitalni izlaz
     public class DigitalOutput : Tag
     {
         public bool InitialValue { get; set; } = false;

@@ -4,9 +4,8 @@ using PLCSimulator;
 
 namespace DataConcentrator
 {
-    // ─── PLC Singleton Wrapper ────────────────────────────────────────────────
-    // Keeps the skeleton's PLCSimulatorManager singleton pattern intact.
-    // tagThreads dictionary is accessed by TagManager to track scan threads.
+    // PLC singleton omotač
+    // Čuva instancu PLCSimulatorManager i mapu nitova za skeniranje tagova.
     public class PLC
     {
         private static PLCSimulatorManager instance;

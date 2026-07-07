@@ -3,9 +3,7 @@ using System.IO;
 
 namespace DataConcentrator
 {
-    // ─── Trace categories ─────────────────────────────────────────────────────
-    // Each value is a bit position (0–7). The traceword stores which categories
-    // are active as a bitmask: e.g. traceword = 0b00000101 means Login + TagAdd.
+    // Kategorije za logovanje kao bitovi (0-7). Traceword je bitmask.
     public enum TraceCategory
     {
         Login        = 0,   // bit 0 → value 1
@@ -18,25 +16,21 @@ namespace DataConcentrator
         Error        = 7    // bit 7 → value 128
     }
 
-    // ─── Logger ───────────────────────────────────────────────────────────────
-    // Static class so it can be called from anywhere without passing instances.
-    // Thread-safe writes via a lock object.
+    // Logger: statička klasa za centralno beleženje događaja.
+    // Pisanje u fajl je sa zaključavanjem radi bezbednosti niti.
     public static class Logger
     {
-        // ── File paths ───────────────────────────────────────────────────────
-        // Both files live next to the executable (AppDomain base directory).
+        // Putanje fajlova (u direktorijumu aplikacije)
         private static readonly string LogPath =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "system.log");
 
         private static readonly string ConfigPath =
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "traceword.cfg");
 
-        // ── Lock for thread-safe file access ─────────────────────────────────
+        // Lock za bezbedan pristup fajlu iz više niti
         private static readonly object _lock = new object();
 
-        // ── Traceword ─────────────────────────────────────────────────────────
-        // Loaded once at startup; persisted whenever a bit changes.
-        // Default = 0b10000100 = Error + TagAdd enabled out of the box.
+        // Traceword: učitava se pri startu i čuva pri promeni.
         private static int _traceword;
 
         public static int Traceword
@@ -49,17 +43,16 @@ namespace DataConcentrator
             }
         }
 
-        // ── Static constructor — runs once when the class is first used ────────
+        // Statički konstruktor koji učitava inicijalno stanje
         static Logger()
         {
             LoadTraceword();
         }
 
-        // ── Public API ────────────────────────────────────────────────────────
+        // Javni API
 
         /// <summary>
-        /// Write a timestamped line to system.log IF the category's bit is set.
-        /// Call this from every action site across the application.
+        /// Upis u system.log ako je kategorija uključena u traceword.
         /// </summary>
         public static void Log(TraceCategory category, string message)
         {
@@ -82,8 +75,7 @@ namespace DataConcentrator
         }
 
         /// <summary>
-        /// Enable or disable a single category. Flips the bit and saves to disk.
-        /// Called by the UI when a checkbox changes.
+        /// Uključi/isključi kategoriju i sačuvaj traceword.
         /// </summary>
         public static void SetBit(TraceCategory category, bool enabled)
         {
@@ -96,8 +88,7 @@ namespace DataConcentrator
         }
 
         /// <summary>
-        /// Check whether a specific category is currently enabled.
-        /// Used by the UI to initialise checkbox states.
+        /// Proveri da li je kategorija uključena.
         /// </summary>
         public static bool IsBitSet(TraceCategory category)
         {
@@ -105,7 +96,7 @@ namespace DataConcentrator
             return (_traceword & mask) != 0;
         }
 
-        // ── Persistence ───────────────────────────────────────────────────────
+        // Persistencija traceword-a
 
         private static void LoadTraceword()
         {
@@ -123,7 +114,7 @@ namespace DataConcentrator
             }
             catch { /* fall through to default */ }
 
-            // Default: Error (bit 7) + TagAdd (bit 2) enabled = 132
+            // Podrazumevano: Error + TagAdd
             _traceword = (1 << (int)TraceCategory.Error) | (1 << (int)TraceCategory.TagAdd);
             SaveTraceword();
         }

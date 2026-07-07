@@ -3,9 +3,8 @@ using ScadaWPF.ViewModels;
 
 namespace ScadaWPF.Views
 {
-    // ─── TraceSettingsWindow code-behind ──────────────────────────────────────
-    // Almost all logic lives in TraceSettingsViewModel.
-    // This file just wires up the DataContext and closes the window.
+    // Kod iza prozora za podešavanje logovanja.
+    // Logika je u ViewModel-u; ovde se samo postavlja DataContext.
     public partial class TraceSettingsWindow : Window
     {
         public TraceSettingsWindow()
@@ -16,8 +15,6 @@ namespace ScadaWPF.Views
             DataContext = new TraceSettingsViewModel();
         }
 
-        // The window can be closed via the system X button; no explicit close
-        // button is needed because every change persists immediately via
-        // Logger.SetBit → SaveTraceword.
+        // Prozor se može zatvoriti standardnim X; promene se odmah čuvaju.
     }
 }

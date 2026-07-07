@@ -16,16 +16,16 @@ namespace ScadaWPF.Views
             Populate();
         }
 
-        // ── Fill all fields based on the tag type ─────────────────────────────
+        // Popuni polja u prozoru prema tipu taga
         private void Populate()
         {
-            // Shared fields — every tag type has these
+            // Zajednička polja za sve tipove tagova
             ValName.Text        = _tag.Name;
             ValType.Text        = _tag.TagType;
             ValDescription.Text = string.IsNullOrEmpty(_tag.Description) ? "—" : _tag.Description;
             ValAddress.Text     = _tag.IOAddress;
 
-            // Hide optional sections by default; show them per type below
+            // Sakrij opcione sekcije, prikaži po tipu
             PanelScan.Visibility   = Visibility.Collapsed;
             PanelAnalog.Visibility = Visibility.Collapsed;
             PanelAiOnly.Visibility = Visibility.Collapsed;
@@ -48,7 +48,7 @@ namespace ScadaWPF.Views
                 ValDeadband.Text    = ai.Deadband.ToString("G");
                 ValHysteresis.Text  = ai.Hysteresis.ToString("G");
 
-                // Load only alarms that belong to this AI tag
+                // Učitaj samo alarm-e vezane za ovaj AI tag
                 AlarmList.ItemsSource = TagManager.Instance.Alarms
                     .Where(a => a.TagName == ai.Name)
                     .ToList();
@@ -79,7 +79,7 @@ namespace ScadaWPF.Views
             }
         }
 
-        // ── Acknowledge ───────────────────────────────────────────────────────
+        // Potvrdi alarm (Acknowledge)
         private void BtnAck_Click(object sender, RoutedEventArgs e)
         {
             if (AlarmList.SelectedItem is Alarm alarm)
@@ -92,21 +92,21 @@ namespace ScadaWPF.Views
                     MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // ── Update selected alarm ─────────────────────────────────────────────
+        // Ažuriraj izabrani alarm
         private void BtnUpdateAlarm_Click(object sender, RoutedEventArgs e)
         {
             if (AlarmList.SelectedItem is Alarm alarm)
             {
                 var win = new UpdateWindow(alarm) { Owner = this };
                 win.ShowDialog();
-                RefreshAlarmList();  // reflect any changes immediately
+                RefreshAlarmList();  // odmah prikaži eventualne izmene
             }
             else
                 MessageBox.Show("Select an alarm to update.", "No selection",
                     MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // ── Delete selected alarm ─────────────────────────────────────────────
+        // Obriši izabrani alarm
         private void BtnDeleteAlarm_Click(object sender, RoutedEventArgs e)
         {
             if (AlarmList.SelectedItem is Alarm alarm)
@@ -126,7 +126,7 @@ namespace ScadaWPF.Views
                     MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        // ── Refresh the alarm list after any change ───────────────────────────
+        // Osveži listu alarma nakon izmene
         private void RefreshAlarmList()
         {
             AlarmList.ItemsSource = TagManager.Instance.Alarms
@@ -136,7 +136,7 @@ namespace ScadaWPF.Views
 
         private void BtnClose_Click(object sender, RoutedEventArgs e) => Close();
 
-        // ── Click on empty space in alarm list → deselect ─────────────────────
+        // Klik na prazno mesto u listi alarma -> poništi selekciju
         private void AlarmList_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var hit = System.Windows.Media.VisualTreeHelper.HitTest(AlarmList, e.GetPosition(AlarmList));

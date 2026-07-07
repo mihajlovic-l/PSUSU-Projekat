@@ -6,16 +6,14 @@ using DataConcentrator;
 
 namespace ScadaWPF.Views
 {
-    // ── UpdateWindow ──────────────────────────────────────────────────────────
-    // Single window used for both tag updates and alarm updates.
-    // The constructor is overloaded — pass a Tag or an Alarm and the window
-    // will show the correct fields pre-populated with current values.
+    // UpdateWindow: koristi se za izmenu taga ili alarma.
+    // Konstruktor prima Tag ili Alarm i popunjava odgovarajuća polja.
     public partial class UpdateWindow : Window
     {
-        private readonly Tag   _tag;    // set when editing a tag
-        private readonly Alarm _alarm;  // set when editing an alarm
+        private readonly Tag   _tag;    // postavljeno pri izmeni taga
+        private readonly Alarm _alarm;  // postavljeno pri izmeni alarma
 
-        // ── Constructor for tag update ────────────────────────────────────────
+        // Konstruktor za izmenu taga
         public UpdateWindow(Tag tag)
         {
             InitializeComponent();
@@ -23,7 +21,7 @@ namespace ScadaWPF.Views
             PopulateForTag();
         }
 
-        // ── Constructor for alarm update ──────────────────────────────────────
+        // Konstruktor za izmenu alarma
         public UpdateWindow(Alarm alarm)
         {
             InitializeComponent();
@@ -31,12 +29,12 @@ namespace ScadaWPF.Views
             PopulateForAlarm();
         }
 
-        // ── Pre-fill fields for tag editing ───────────────────────────────────
+        // Popuni polja za izmenu taga
         private void PopulateForTag()
         {
             TxtHeader.Text = $"Update {_tag.TagType} Tag — {_tag.Name}";
 
-            // Name is shown read-only; user cannot rename a tag (PK constraint)
+            // Ime je samo za čitanje; ne može se menjati zbog primarnog ključa
             PanelTagShared.Visibility = Visibility.Visible;
             TxtName.Text        = _tag.Name;
             TxtDescription.Text = _tag.Description;
@@ -75,12 +73,12 @@ namespace ScadaWPF.Views
             else if (_tag is DigitalOutput doo)
             {
                 PanelOutput.Visibility = Visibility.Visible;
-                // Show current value as 0/1
+                // Prikaži trenutnu vrednost kao 0/1
                 TxtInitialValue.Text = doo.InitialValue ? "1" : "0";
             }
         }
 
-        // ── Pre-fill fields for alarm editing ─────────────────────────────────
+        // Popuni polja za izmenu alarma
         private void PopulateForAlarm()
         {
             TxtHeader.Text = $"Update Alarm — Tag: {_alarm.TagName}";
@@ -93,7 +91,7 @@ namespace ScadaWPF.Views
             TxtAlarmMsg.Text    = _alarm.Message;
         }
 
-        // ── Save ──────────────────────────────────────────────────────────────
+        // Sačuvaj promene
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -121,7 +119,7 @@ namespace ScadaWPF.Views
             Close();
         }
 
-        // ── Tag save logic ────────────────────────────────────────────────────
+        // Logika za čuvanje izmena taga
         private void SaveTag()
         {
             if (_tag is AnalogInput ai)
@@ -170,7 +168,7 @@ namespace ScadaWPF.Views
             }
         }
 
-        // ── Alarm save logic ──────────────────────────────────────────────────
+        // Logika za čuvanje alarma
         private void SaveAlarm()
         {
             _alarm.Limit       = RequireDouble(TxtAlarmLimit, "Limit Value");

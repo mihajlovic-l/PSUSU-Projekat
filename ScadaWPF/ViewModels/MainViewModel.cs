@@ -9,17 +9,15 @@ using DataConcentrator;
 
 namespace ScadaWPF.ViewModels
 {
-    // ─── MainViewModel ────────────────────────────────────────────────────────
-    // Sits between MainWindow.xaml and the TagManager service.
-    // All collections here are the same ObservableCollections that TagManager
-    // owns, so WPF gets live updates whenever scan threads modify values.
+    // MainViewModel: posrednik između UI i TagManager-a.
+    // Koristi iste ObservableCollection iz TagManager-a za automatsko osvežavanje.
     public class MainViewModel : INotifyPropertyChanged
     {
-        // Direct references to TagManager's collections (not copies)
+        // Direktne reference na kolekcije iz TagManager-a (ne kopije)
         public ObservableCollection<Tag>            Tags   => TagManager.Instance.Tags;
         public ObservableCollection<Alarm>          Alarms => TagManager.Instance.Alarms;
 
-        // ── Selected item tracking ────────────────────────────────────────────
+        // Praćenje selektovanih stavki
         private Tag _selectedTag;
         public Tag SelectedTag
         {
@@ -34,15 +32,15 @@ namespace ScadaWPF.ViewModels
             set { _selectedAlarm = value; OnPropertyChanged(nameof(SelectedAlarm)); }
         }
 
-        // ── Constructor ───────────────────────────────────────────────────────
+        // Konstruktor
         public MainViewModel()
         {
-            // Subscribe to alarm events from the scan threads.
-            // AlarmRaised fires on a background thread, so we need Dispatcher.
+            // Pretplata na događaje alarma iz nitova za skeniranje.
+            // AlarmRaised se poziva iz pozadinske niti, zato koristimo Dispatcher.
             TagManager.Instance.AlarmRaised += OnAlarmRaised;
         }
 
-        // ── Alarm event handler ───────────────────────────────────────────────
+        // Obrada događaja alarma (prikaz poruke na UI)
         private void OnAlarmRaised(object sender, AlarmRaisedEventArgs e)
         {
             // Read the alarm from the DB on the UI thread and show it
@@ -51,7 +49,7 @@ namespace ScadaWPF.ViewModels
                 var alarm = Alarms.FirstOrDefault(a => a.Id == e.AlarmId);
                 if (alarm != null)
                 {
-                    // Flash message to inform the user — the row colour changes via binding
+                    // Kratka poruka za korisnika; boja reda menja se preko bindovanja
                     MessageBox.Show(
                         $"⚠ Alarm triggered!\n\nTag: {alarm.TagName}\nMessage: {alarm.Message}",
                         "SCADA Alarm",
@@ -61,7 +59,7 @@ namespace ScadaWPF.ViewModels
             });
         }
 
-        // ── Actions ───────────────────────────────────────────────────────────
+        // Akcije pozvane iz UI
 
         public void RemoveSelectedTag()
         {
@@ -98,7 +96,7 @@ namespace ScadaWPF.ViewModels
                 }
                 else if (tag is DigitalOutput)
                 {
-                    // Only exactly "0" or "1" accepted for digital outputs
+                    // Prihvatljive vrednosti za digitalni izlaz su tačno "0" ili "1"
                     if (valueText == "0")
                         TagManager.Instance.WriteDigitalOutput(tagName, false);
                     else if (valueText == "1")

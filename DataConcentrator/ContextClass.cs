@@ -2,10 +2,8 @@ using System.Data.Entity;
 
 namespace DataConcentrator
 {
-    // ─── Entity Framework DbContext ───────────────────────────────────────────
-    // Using one DbSet per concrete tag type instead of TPH through the base Tag.
-    // This is simpler and avoids EF ObjectStateEntry tracking issues with
-    // abstract base classes and discriminator columns.
+    // DbContext za Entity Framework
+    // Jedan DbSet po konkretnom tipu taga radi jednostavnosti i stabilnosti.
     public class ContextClass : DbContext
     {
         private static ContextClass instance;
@@ -20,17 +18,17 @@ namespace DataConcentrator
             }
         }
 
-        // One DbSet per concrete tag type — each maps to its own table
+        // Jedan DbSet po konkretnom tipu taga (mapira na svoju tabelu)
         public DbSet<AnalogInput>    AnalogInputs    { get; set; }
         public DbSet<AnalogOutput>   AnalogOutputs   { get; set; }
         public DbSet<DigitalInput>   DigitalInputs   { get; set; }
         public DbSet<DigitalOutput>  DigitalOutputs  { get; set; }
 
-        // Alarms and audit log
+        // Alarmi i zapisnik aktivacija
         public DbSet<Alarm>          Alarms          { get; set; }
         public DbSet<ActivatedAlarm> ActivatedAlarms { get; set; }
 
-        // History of AI tag values — used for report generation
+        // Istorija vrednosti AI tagova (koristi se za izveštaje)
         public DbSet<TagValueRecord> TagValueRecords { get; set; }
     }
 }

@@ -13,29 +13,29 @@ namespace DataConcentrator
 
     public class TagManager
     {
-        // ── Singleton ─────────────────────────────────────────────────────────
+        // Singleton instance
         private static TagManager _instance;
         public  static TagManager Instance =>
             _instance ?? (_instance = new TagManager());
 
-        // ── Observable collections (WPF binds to these) ───────────────────────
+        // Observable kolekcije koje vezuje WPF
         public ObservableCollection<Tag>   Tags   { get; } = new ObservableCollection<Tag>();
         public ObservableCollection<Alarm> Alarms { get; } = new ObservableCollection<Alarm>();
 
-        // ── Alarm raised event ────────────────────────────────────────────────
+        // Događaj podizanja alarma
         public event EventHandler<AlarmRaisedEventArgs> AlarmRaised;
 
-        // ── Lock for PLC read/write ───────────────────────────────────────────
+        // Lock za čitanje/pisanje PLC-a
         private static readonly object _plcLock = new object();
 
-        // ── Constructor: load persisted data from DB ──────────────────────────
+        // Konstruktor: učitava podatke iz baze i pokreće niti
         private TagManager()
         {
             try
             {
                 var ctx = ContextClass.Instance;
 
-                // Load all four tag types into the shared observable collection
+                // Učitaj sve tipove tagova u kolekciju
                 foreach (var t in ctx.AnalogInputs.ToList())   Tags.Add(t);
                 foreach (var t in ctx.AnalogOutputs.ToList())  Tags.Add(t);
                 foreach (var t in ctx.DigitalInputs.ToList())  Tags.Add(t);
@@ -43,7 +43,7 @@ namespace DataConcentrator
 
                 foreach (var a in ctx.Alarms.ToList()) Alarms.Add(a);
 
-                // Restart scan threads for input tags that were scanning
+                // Ponovo pokreni niti za tagove koji su skenirani
                 foreach (var tag in Tags.OfType<InputTag>().Where(t => t.ScanEnabled))
                     StartScanThread(tag);
 
@@ -55,9 +55,7 @@ namespace DataConcentrator
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════════════
-        //  TAG CRUD
-        // ═══════════════════════════════════════════════════════════════════════
+        // TAG CRUD
 
         public void AddTag(Tag tag)
         {
@@ -65,7 +63,7 @@ namespace DataConcentrator
             {
                 var ctx = ContextClass.Instance;
 
-                // Add to the correct typed DbSet
+                // Dodaj u odgovarajući DbSet
                 if      (tag is AnalogInput  ai) ctx.AnalogInputs.Add(ai);
                 else if (tag is AnalogOutput ao) ctx.AnalogOutputs.Add(ao);
                 else if (tag is DigitalInput di) ctx.DigitalInputs.Add(di);
@@ -94,7 +92,7 @@ namespace DataConcentrator
 
                 var ctx = ContextClass.Instance;
 
-                // Remove from whichever typed DbSet holds this tag
+                // Ukloni iz DbSet-a koji sadrži ovaj tag
                 var ai = ctx.AnalogInputs.Find(tagName);
                 if (ai != null) ctx.AnalogInputs.Remove(ai);
 
@@ -107,7 +105,7 @@ namespace DataConcentrator
                 var doo = ctx.DigitalOutputs.Find(tagName);
                 if (doo != null) ctx.DigitalOutputs.Remove(doo);
 
-                // Remove any alarms that reference this tag
+                // Ukloni sve alarm-e koji referenciraju tag
                 var related = ctx.Alarms.Where(a => a.TagName == tagName).ToList();
                 ctx.Alarms.RemoveRange(related);
                 foreach (var a in related)
@@ -167,9 +165,7 @@ namespace DataConcentrator
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════════════
-        //  ALARM CRUD
-        // ═══════════════════════════════════════════════════════════════════════
+        // ALARM CRUD
 
         public void AddAlarm(Alarm alarm)
         {
@@ -248,9 +244,7 @@ namespace DataConcentrator
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════════════
-        //  WRITE TO OUTPUT TAGS
-        // ═══════════════════════════════════════════════════════════════════════
+        // Upis u izlazne tagove
 
         public void WriteAnalogOutput(string tagName, double value)
         {
@@ -286,9 +280,7 @@ namespace DataConcentrator
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════════════
-        //  SCAN ON/OFF
-        // ═══════════════════════════════════════════════════════════════════════
+        // Upravljanje skeniranjem (uključi/isključi)
 
         public void SetScanEnabled(string tagName, bool enabled)
         {
@@ -300,15 +292,13 @@ namespace DataConcentrator
             Logger.Log(TraceCategory.Update, $"SCAN_{(enabled ? "ON" : "OFF")} name={tagName}");
         }
 
-        // ═══════════════════════════════════════════════════════════════════════
-        //  REPORT
-        // ═══════════════════════════════════════════════════════════════════════
+        // Generisanje izveštaja
 
         public string GenerateReport()
         {
             var lines = new System.Text.StringBuilder();
             lines.AppendLine($"SCADA Report — generated {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-            lines.AppendLine(new string('─', 60));
+            lines.AppendLine(new string('-', 60));
 
             foreach (var ai in Tags.OfType<AnalogInput>())
             {
@@ -316,7 +306,7 @@ namespace DataConcentrator
                 double low  = mid - 5.0;
                 double high = mid + 5.0;
 
-                // Fetch all recorded values for this tag that fall in [mid-5, mid+5]
+                // Preuzmi snimljene vrednosti koje su u traženom opsegu
                 var records = ContextClass.Instance.TagValueRecords
                     .Where(r => r.TagName == ai.Name && r.Value >= low && r.Value <= high)
                     .OrderBy(r => r.Timestamp)
@@ -337,9 +327,7 @@ namespace DataConcentrator
             return lines.ToString();
         }
 
-        // ═══════════════════════════════════════════════════════════════════════
-        //  SCAN THREAD MANAGEMENT
-        // ═══════════════════════════════════════════════════════════════════════
+        // Upravljanje nitima za skeniranje
 
         private void StartScanThread(InputTag tag)
         {
@@ -384,9 +372,9 @@ namespace DataConcentrator
                                 ai.CurrentValue = raw;
                                 lastAnalogValue = raw;
 
-                                // Use a fresh local context per save — the shared
-                                // singleton DbContext is not thread-safe across
-                                // multiple simultaneous scan threads
+                                // Koristi lokalni DbContext za svaki upis —
+                                // deljeni singleton DbContext nije bezbedan za više niti
+                                // koje istovremeno zapisuju
                                 try
                                 {
                                     using (var ctx = new ContextClass())

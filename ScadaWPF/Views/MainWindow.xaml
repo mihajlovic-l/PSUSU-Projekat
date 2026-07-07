@@ -19,7 +19,7 @@
 
     <DockPanel>
 
-        <!-- ── Top toolbar ──────────────────────────────────────────────────── -->
+        <!-- Gornja alatna traka -->
         <materialDesign:ColorZone DockPanel.Dock="Top" Mode="Standard"
                                    materialDesign:ElevationAssist.Elevation="Dp2"
                                    Padding="16,10">
@@ -73,7 +73,7 @@
             </StackPanel>
         </materialDesign:ColorZone>
 
-        <!-- ── Main tag list (fills the remaining area) ───────────────────────── -->
+        <!-- Glavna lista tagova (popunjava preostali prostor) -->
         <materialDesign:Card Margin="12" UniformCornerRadius="4"
                               materialDesign:ElevationAssist.Elevation="Dp2">
             <DockPanel Margin="16,12">

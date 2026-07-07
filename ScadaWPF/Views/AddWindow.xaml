@@ -11,13 +11,13 @@
 
     <DockPanel Margin="24">
 
-        <!-- ── Header ─────────────────────────────────────────────────────────── -->
+        <!-- Zaglavlje prozora -->
         <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
             <TextBlock Text="Add Tag / Alarm"
                FontSize="17" FontWeight="Medium"/>
         </StackPanel>
 
-        <!-- ── Type selector ──────────────────────────────────────────────────── -->
+        <!-- Izbor tipa (AI/AO/DI/DO/Alarm) -->
         <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
             <Label Content="Type" FontWeight="SemiBold"/>
             <ComboBox DockPanel.Dock="Top" x:Name="CboType"
@@ -32,7 +32,7 @@
             </ComboBox>
         </StackPanel>
 
-        <!-- ── Bottom buttons ─────────────────────────────────────────────────── -->
+        <!-- Dugmad na dnu -->
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
                     HorizontalAlignment="Right" Margin="0,16,0,0">
             <Button Content="Add" Style="{StaticResource PrimaryButton}"
@@ -41,7 +41,7 @@
                     Click="BtnCancel_Click" Width="90" Margin="8,0,0,0"/>
         </StackPanel>
 
-        <!-- ── Scrollable form area ────────────────────────────────────────────── -->
+        <!-- Formular (skrolabilan) -->
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="FormPanel" Margin="0,0,0,8">
 

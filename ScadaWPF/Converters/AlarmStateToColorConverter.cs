@@ -6,11 +6,8 @@ using DataConcentrator;
 
 namespace ScadaWPF.Converters
 {
-    // ─── AlarmStateToColorConverter ───────────────────────────────────────────
-    // Used by the alarm list to colour rows:
-    //   Active       → red   (user hasn't acknowledged yet)
-    //   Acknowledged → yellow (user saw it but value still out of range)
-    //   Inactive     → transparent (normal)
+    // Pretvara stanje alarma u boju reda u listi alarma.
+    // Active -> crvena, Acknowledged -> žuta, Inactive -> prozirno
     public class AlarmStateToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,
@@ -20,8 +17,8 @@ namespace ScadaWPF.Converters
             {
                 switch (state)
                 {
-                    case AlarmState.Active:         return new SolidColorBrush(Color.FromRgb(0x5C, 0x2B, 0x2B)); // dark red   (#5C2B2B)
-                    case AlarmState.Acknowledged:   return new SolidColorBrush(Color.FromRgb(0x5C, 0x4A, 0x1E)); // dark amber (#5C4A1E)
+                    case AlarmState.Active:         return new SolidColorBrush(Color.FromRgb(0x5C, 0x2B, 0x2B)); // tamno crvena (#5C2B2B)
+                    case AlarmState.Acknowledged:   return new SolidColorBrush(Color.FromRgb(0x5C, 0x4A, 0x1E)); // tamno žuta (#5C4A1E)
                     default:                        return Brushes.Transparent;
                 }
             }

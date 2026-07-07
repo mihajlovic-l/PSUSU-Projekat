@@ -5,9 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataConcentrator
 {
-    // ─── Alarm definition ────────────────────────────────────────────────────
-    // One alarm is linked to exactly one AnalogInput tag via TagName (FK).
-    // Multiple alarms can be attached to the same AI tag.
+    // Definicija alarma
+    // Alarm je vezan za jedan AnalogInput tag (preko TagName).
     public class Alarm : INotifyPropertyChanged
     {
         private AlarmState state = AlarmState.Inactive;
@@ -28,7 +27,7 @@ namespace DataConcentrator
 
         public string Message { get; set; } = "";
 
-        // Three-state: Inactive → Active (red) → Acknowledged (yellow) → Inactive
+        // Stanja alarma: Inactive → Active → Acknowledged
         public AlarmState State
         {
             get { return state; }
@@ -40,7 +39,7 @@ namespace DataConcentrator
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(p));
     }
 
-    // ─── Alarm state enum ────────────────────────────────────────────────────
+    // Enum stanja alarma
     public enum AlarmState
     {
         Inactive,       // value is within normal range
@@ -48,8 +47,7 @@ namespace DataConcentrator
         Acknowledged    // user clicked ACK, but value is still out of range (yellow)
     }
 
-    // ─── Activated Alarm record ───────────────────────────────────────────────
-    // Written to the DB each time an alarm fires. This is the audit trail.
+    // Zapis aktiviranog alarma koji se upisuje u bazu prilikom pokretanja alarma.
     public class ActivatedAlarm
     {
         [Key]
@@ -62,10 +60,7 @@ namespace DataConcentrator
         public DateTime Timestamp { get; set; }   // when it happened
     }
 
-    // ─── Tag Value Record ─────────────────────────────────────────────────────
-    // Written to the DB every time an AI tag's value changes (after deadband
-    // filtering). GenerateReport() queries this table to find values that fall
-    // in the range (HighLimit + LowLimit) / 2 ± 5.
+    // Zapis vrednosti taga koji se čuva pri promeni vrednosti AI taga.
     public class TagValueRecord
     {
         [Key]

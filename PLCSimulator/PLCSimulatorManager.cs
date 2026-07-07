@@ -8,12 +8,7 @@ using System.Threading.Tasks;
 namespace PLCSimulator
 {
     /// <summary>
-    /// PLC Simulator
-    /// 
-    /// 4 x ANALOG INPUT : ADDR001 - ADDR004
-    /// 4 x ANALOG OUTPUT: ADDR005 - ADDR008
-    /// 1 x DIGITAL INPUT: ADDR009, ADDR0011-ADDR0013
-    /// 1 x DIGITAL OUTPUT: ADDR010, ADDR0014-ADDR0016
+    /// PLC simulator sa skupom adresa za AI/AO/DI/DO.
     /// </summary>
     public class PLCSimulatorManager
     {
@@ -26,7 +21,7 @@ namespace PLCSimulator
         {
             addressValues = new Dictionary<string, double>();
 
-            // TODO: dodati adrese
+            // Inicijalizacija adresa i početnih vrednosti
             // AI
             addressValues.Add("ADDR001", 0);
             addressValues.Add("ADDR002", 0);

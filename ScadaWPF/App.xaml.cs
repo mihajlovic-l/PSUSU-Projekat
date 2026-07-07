@@ -12,10 +12,10 @@ namespace ScadaWPF
 
             AppDomain.CurrentDomain.SetData("DataDirectory", AppDomain.CurrentDomain.BaseDirectory);
 
-            // Log application start
+            // Zabeleži start aplikacije
             Logger.Log(TraceCategory.Login, "APPLICATION_START");
 
-            // Wire up global exception handler so errors are always logged
+            // Globalni handler izuzetaka koji loguje greške
             AppDomain.CurrentDomain.UnhandledException += (s, ex) =>
                 Logger.Log(TraceCategory.Error,
                     $"UnhandledException: {ex.ExceptionObject}");
@@ -24,20 +24,18 @@ namespace ScadaWPF
             {
                 Logger.Log(TraceCategory.Error,
                     $"DispatcherException: {ex.Exception.Message}");
-                ex.Handled = true;  // prevent crash; show message instead
+                ex.Handled = true;  // spreči pad aplikacije; prikaži poruku umesto toga
                 MessageBox.Show($"Unexpected error:\n{ex.Exception.Message}",
                     "SCADA Error", MessageBoxButton.OK, MessageBoxImage.Error);
             };
 
-            // Touch TagManager.Instance to trigger the constructor:
-            //   • loads tags/alarms from DB
-            //   • starts all scan threads
+            // Inicijalizuj TagManager da učita podatke i pokrene niti
             var _ = TagManager.Instance;
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            // Stop the PLC simulator cleanly on exit
+            // Zaustavi PLC simulator pri izlasku
             new PLC().StopSimulator();
             Logger.Log(TraceCategory.Login, "APPLICATION_EXIT");
             base.OnExit(e);

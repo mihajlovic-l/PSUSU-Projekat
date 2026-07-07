@@ -3,13 +3,11 @@ using DataConcentrator;
 
 namespace ScadaWPF.ViewModels
 {
-    // ─── TraceSettingsViewModel ───────────────────────────────────────────────
-    // Each public bool property maps to one bit in Logger.Traceword.
-    // The TraceSettingsWindow binds each CheckBox.IsChecked to one of these.
-    // Setting a property calls Logger.SetBit → persists to disk immediately.
+    // TraceSettingsViewModel: svojstva mapiraju bitove u Logger.Traceword.
+    // Promena svojstva poziva Logger.SetBit i odmah se čuva.
     public class TraceSettingsViewModel : INotifyPropertyChanged
     {
-        // ── One property per TraceCategory ────────────────────────────────────
+        // Po jedno svojstvo za svaku kategoriju logovanja
 
         public bool LoginEnabled
         {
@@ -91,18 +89,15 @@ namespace ScadaWPF.ViewModels
             }
         }
 
-        // ── Traceword display ─────────────────────────────────────────────────
-        // Shows the numeric value and its binary representation so the user
-        // can see the bitmask in real time as they toggle checkboxes.
+        // Prikaz traceword-a: brojčano i binarno
 
         public int Traceword => Logger.Traceword;
 
-        // Binary string with leading zeros, e.g. "00100101"
+        // Binarni string sa vodećim nulama, npr. "00100101"
         public string TracewordBinary =>
             System.Convert.ToString(Logger.Traceword, 2).PadLeft(8, '0');
 
-        // ── Refresh helper ────────────────────────────────────────────────────
-        // Called after every bit change to update the numeric/binary displays.
+        // Pomoćna metoda za osvežavanje prikaza nakon promene bita
         private void Refresh()
         {
             OnPropertyChanged(nameof(Traceword));

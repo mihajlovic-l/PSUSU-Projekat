@@ -6,19 +6,17 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- ── Material Design palette + control theme ───────────────────── -->
-                <!-- PrimaryColor "Blue" keeps the app close to the previous #1A73E8 accent -->
+                <!-- Tema i paleta boja (Material Design) -->
                 <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Blue" SecondaryColor="Amber"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- ── Semantic status colours (alarm severity / destructive actions) ── -->
+            <!-- Boje za status (alarm, upozorenje, uspeh) -->
             <SolidColorBrush x:Key="DangerBrush"  Color="#D32F2F"/>
             <SolidColorBrush x:Key="WarningBrush" Color="#F9A825"/>
             <SolidColorBrush x:Key="SuccessBrush" Color="#388E3C"/>
 
-            <!-- ── Buttons ─────────────────────────────────────────────────────── -->
-            <!-- Primary action -> filled Material button (uses the primary palette colour) -->
+            <!-- Stilovi dugmadi -->
             <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}"/>
 
             <!-- Secondary / less prominent action -> outlined Material button -->
@@ -30,13 +28,7 @@
                 <Setter Property="BorderBrush" Value="{StaticResource DangerBrush}"/>
                 <Setter Property="Foreground"  Value="White"/>
             </Style>
-
-            <!-- ── Compact GridView column headers ────────────────────────────────
-                 The stock Material Design header style reserves a lot of horizontal
-                 padding (meant for mouse-friendly touch targets), which crowds out
-                 the header text on the narrow columns used by the tag/alarm grids.
-                 This trims the padding and left-aligns the text so headers actually
-                 fit their columns. ──────────────────────────────────────────────── -->
+            <!-- Kompaktan stil zaglavlja kolona za tag/alarm tabele -->
             <Style x:Key="CompactGridViewColumnHeader" TargetType="GridViewColumnHeader"
                    BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
                 <Setter Property="Padding" Value="10,6,10,6"/>

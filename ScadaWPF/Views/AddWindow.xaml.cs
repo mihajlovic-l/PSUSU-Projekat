@@ -10,8 +10,7 @@ namespace ScadaWPF.Views
 {
     public partial class AddWindow : Window
     {
-        // ── Valid address pools per tag type ──────────────────────────────────
-        // Must match exactly what PLCSimulatorManager has in its dictionary.
+        // Dozvoljene adrese po tipu taga (mora da se poklapa sa PLCSimulator)
         private static readonly List<string> AI_ADDRESSES =
             new List<string> { "ADDR001", "ADDR002", "ADDR003", "ADDR004" };
         private static readonly List<string> AO_ADDRESSES =
@@ -28,7 +27,7 @@ namespace ScadaWPF.Views
             ShowPanelsForType("AI");
         }
 
-        // ── Type selector changed ─────────────────────────────────────────────
+        // Promena tipa u combobox-u
         private void CboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CboType.SelectedItem is ComboBoxItem item)
@@ -38,7 +37,7 @@ namespace ScadaWPF.Views
             }
         }
 
-        // ── Panel + address ComboBox update ───────────────────────────────────
+        // Prikaz panel-a i popunjavanje adresa
         private void ShowPanelsForType(string type)
         {
             if (PanelShared == null) return;
@@ -81,7 +80,7 @@ namespace ScadaWPF.Views
             }
         }
 
-        // ── Populate address ComboBox with available addresses only ───────────
+        // Popuni ComboBox dostupnim adresama
         private void PopulateAddresses(List<string> pool)
         {
             var used = TagManager.Instance.Tags
@@ -97,7 +96,7 @@ namespace ScadaWPF.Views
                 CboAddress.SelectedIndex = 0;
         }
 
-        // ── Alarm tag list ────────────────────────────────────────────────────
+        // Lista AI tagova za izbor pri kreiranju alarma
         private void RefreshAlarmTagList()
         {
             CboAlarmTag.Items.Clear();
@@ -105,7 +104,7 @@ namespace ScadaWPF.Views
                 CboAlarmTag.Items.Add(tag.Name);
         }
 
-        // ── Add button ────────────────────────────────────────────────────────
+        // Obrada dugmeta Add
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             if (CboType.SelectedItem is ComboBoxItem item)
@@ -141,7 +140,7 @@ namespace ScadaWPF.Views
             Close();
         }
 
-        // ── Validation helpers ────────────────────────────────────────────────
+        // Pomoćne metode za validaciju unosa
 
         private string RequireAddress()
         {
@@ -160,8 +159,7 @@ namespace ScadaWPF.Views
 
         private double RequireDouble(TextBox tb, string fieldName)
         {
-            // InvariantCulture ensures dot is always the decimal separator,
-            // regardless of the OS locale (e.g. Serbian uses comma by default)
+            // Koristi InvariantCulture da tačka bude decimalni separator
             if (!double.TryParse(tb.Text.Trim(),
                     NumberStyles.Any, CultureInfo.InvariantCulture, out double v))
                 throw new Exception($"{fieldName} must be a valid number (use '.' as decimal separator).");
@@ -175,8 +173,7 @@ namespace ScadaWPF.Views
             return v;
         }
 
-        // Validates that a TextBox contains exactly "0" or "1" — nothing else.
-        // Returns the equivalent bool (0 → false, 1 → true).
+        // Proverava da li TextBox sadrži tačno "0" ili "1" i vraća bool
         private bool RequireDigitalValue(TextBox tb, string fieldName)
         {
             string v = tb.Text.Trim();
@@ -191,7 +188,7 @@ namespace ScadaWPF.Views
                 throw new Exception($"A tag named '{name}' already exists.");
         }
 
-        // ── Tag factory methods ───────────────────────────────────────────────
+        // Metode za kreiranje tagova
 
         private void AddAnalogInput()
         {

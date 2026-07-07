@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace ScadaWPF.Converters
 {
-    // Converts true/false to "Yes"/"No" for display in the tag grid
+    // Pretvara true/false u "Yes"/"No" za prikaz u gridu
     public class BoolToYesNoConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,
