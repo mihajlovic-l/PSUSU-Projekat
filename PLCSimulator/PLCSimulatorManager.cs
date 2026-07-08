@@ -21,26 +21,25 @@ namespace PLCSimulator
         {
             addressValues = new Dictionary<string, double>();
 
-            // Inicijalizacija adresa i početnih vrednosti
-            // AI
+            // Analogni ulazi
             addressValues.Add("ADDR001", 0);
             addressValues.Add("ADDR002", 0);
             addressValues.Add("ADDR003", 0);
             addressValues.Add("ADDR004", 0);
 
-            // AO
+            // Analogni izlazi
             addressValues.Add("ADDR005", 0);
             addressValues.Add("ADDR006", 0);
             addressValues.Add("ADDR007", 0);
             addressValues.Add("ADDR008", 0);
 
-            // DI
+            // Digitalni ulazi
             addressValues.Add("ADDR009", 0);
             addressValues.Add("ADDR011", 0);
             addressValues.Add("ADDR012", 0);
             addressValues.Add("ADDR013", 0);
 
-            // DO
+            // Digitalni izlazi
             addressValues.Add("ADDR010", 0);
             addressValues.Add("ADDR014", 0);
             addressValues.Add("ADDR015", 0);
@@ -66,10 +65,10 @@ namespace PLCSimulator
 
                 lock (locker)
                 {
-                    addressValues["ADDR001"] = 100 * Math.Sin((double)DateTime.Now.Second / 60 * Math.PI); //SINE
-                    addressValues["ADDR002"] = 100 * DateTime.Now.Second / 60; //RAMP
-                    addressValues["ADDR003"] = 50 * Math.Cos((double)DateTime.Now.Second / 60 * Math.PI); //COS
-                    addressValues["ADDR004"] = RandomNumberBetween(0, 50);  //rand
+                    addressValues["ADDR001"] = 100 * Math.Sin((double)DateTime.Now.Second / 60 * Math.PI); // sinusoida
+                    addressValues["ADDR002"] = 100 * DateTime.Now.Second / 60; // rampa
+                    addressValues["ADDR003"] = 50 * Math.Cos((double)DateTime.Now.Second / 60 * Math.PI); // kosinusoida
+                    addressValues["ADDR004"] = RandomNumberBetween(0, 50);  // slučajna vrednost
                 }
             }
         }

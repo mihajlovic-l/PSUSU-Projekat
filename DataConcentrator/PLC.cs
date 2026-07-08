@@ -10,7 +10,7 @@ namespace DataConcentrator
     {
         private static PLCSimulatorManager instance;
 
-        // Dictionary maps tag name → its scan thread
+        // Rečnik: ime taga → njegova nit za skeniranje
         public static Dictionary<string, Thread> tagThreads =
             new Dictionary<string, Thread>();
 

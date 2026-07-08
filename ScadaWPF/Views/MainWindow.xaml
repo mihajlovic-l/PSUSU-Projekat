@@ -28,7 +28,7 @@
                 <TextBlock Text="SCADA System" FontSize="18" FontWeight="Medium"
                            VerticalAlignment="Center" Margin="0,0,24,0"/>
 
-                <!-- Tag management -->
+                <!-- Upravljanje tagovima -->
                 <Button Content="＋ Add Tag / Alarm"
                         Style="{StaticResource PrimaryButton}"
                         Click="BtnAdd_Click" Margin="0,0,8,0"/>
@@ -45,7 +45,7 @@
                 <Separator Style="{StaticResource MaterialDesignSeparator}"
                            Width="1" Margin="0,0,16,0"/>
 
-                <!-- Write to output -->
+                <!-- Upis u izlaz -->
                 <TextBox x:Name="TxtWriteValue" Width="140" Margin="0,0,8,0"
                          VerticalAlignment="Center"
                          materialDesign:HintAssist.Hint="Value"
@@ -55,7 +55,7 @@
                         Style="{StaticResource SecondaryButton}"
                         Click="BtnWrite_Click" Margin="0,0,16,0"/>
 
-                <!-- Scan toggle -->
+                <!-- Uključi/isključi skeniranje -->
                 <Button Content="Toggle Scan"
                         Style="{StaticResource SecondaryButton}"
                         Click="BtnToggleScan_Click" Margin="0,0,16,0"/>
@@ -63,7 +63,7 @@
                 <Separator Style="{StaticResource MaterialDesignSeparator}"
                            Width="1" Margin="0,0,10,0"/>
 
-                <!-- Report, Details, Trace settings -->
+                <!-- Izveštaj, detalji, podešavanja logovanja -->
                 <Button Content="📄 Report"
                         Style="{StaticResource SecondaryButton}"
                         Click="BtnReport_Click" Margin="0,0,8,0"/>

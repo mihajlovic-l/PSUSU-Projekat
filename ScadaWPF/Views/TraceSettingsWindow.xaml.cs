@@ -11,7 +11,7 @@ namespace ScadaWPF.Views
         {
             InitializeComponent();
 
-            // ViewModel reads current bit states from Logger on construction
+            // ViewModel učitava trenutna stanja bitova iz Logger-a pri kreiranju
             DataContext = new TraceSettingsViewModel();
         }
 

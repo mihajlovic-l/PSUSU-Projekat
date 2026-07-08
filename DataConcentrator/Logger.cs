@@ -6,14 +6,14 @@ namespace DataConcentrator
     // Kategorije za logovanje kao bitovi (0-7). Traceword je bitmask.
     public enum TraceCategory
     {
-        Login        = 0,   // bit 0 → value 1
-        AlarmAck     = 1,   // bit 1 → value 2
-        TagAdd       = 2,   // bit 2 → value 4
-        Update    = 3,   // bit 3 → value 8
-        ImportExport = 4,   // bit 4 → value 16
-        AlarmRaised  = 5,   // bit 5 → value 32
-        TagWrite     = 6,   // bit 6 → value 64
-        Error        = 7    // bit 7 → value 128
+        Login        = 0,   // bit 0
+        AlarmAck     = 1,   // bit 1
+        TagAdd       = 2,   // bit 2
+        Update    = 3,   // bit 3
+        ImportExport = 4,   // bit 4
+        AlarmRaised  = 5,   // bit 5
+        TagWrite     = 6,   // bit 6
+        Error        = 7    // bit 7
     }
 
     // Logger: statička klasa za centralno beleženje događaja.
@@ -39,7 +39,7 @@ namespace DataConcentrator
             private set
             {
                 _traceword = value;
-                SaveTraceword();                 // immediately persist to disk
+                SaveTraceword();                 // odmah sačuvaj na disk
             }
         }
 
@@ -56,7 +56,7 @@ namespace DataConcentrator
         /// </summary>
         public static void Log(TraceCategory category, string message)
         {
-            // Check whether the bit for this category is 1
+            // Proveri da li je bit za ovu kategoriju uključen
             if (!IsBitSet(category)) return;
 
             string line = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [{category.ToString().ToUpper()}] {message}";
@@ -69,7 +69,7 @@ namespace DataConcentrator
                 }
                 catch
                 {
-                    // If logging itself fails we must not throw — the app must keep running
+                    // Ako logovanje ne uspe, aplikacija ne sme da padne
                 }
             }
         }
@@ -82,9 +82,9 @@ namespace DataConcentrator
             int mask = 1 << (int)category;
 
             if (enabled)
-                Traceword = _traceword | mask;      // set the bit
+                Traceword = _traceword | mask;      // postavi bit
             else
-                Traceword = _traceword & ~mask;     // clear the bit
+                Traceword = _traceword & ~mask;     // ukloni bit
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace DataConcentrator
                     }
                 }
             }
-            catch { /* fall through to default */ }
+            catch { /* koristi podrazumevanu vrednost */ }
 
             // Podrazumevano: Error + TagAdd
             _traceword = (1 << (int)TraceCategory.Error) | (1 << (int)TraceCategory.TagAdd);
@@ -125,7 +125,7 @@ namespace DataConcentrator
             {
                 File.WriteAllText(ConfigPath, _traceword.ToString());
             }
-            catch { /* non-fatal — traceword lives in memory even if disk write fails */ }
+            catch { /* nije kritično — traceword ostaje u memoriji */ }
         }
     }
 }

@@ -15,14 +15,14 @@ namespace DataConcentrator
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        // Foreign key — name of the AI tag this alarm watches
+        // Ime AI taga koji ovaj alarm prati
         public string TagName { get; set; }
 
-        // The threshold value that triggers the alarm
+        // Granična vrednost koja aktivira alarm
         public double Limit { get; set; }
 
-        // True = alarm fires when value goes ABOVE the limit
-        // False = alarm fires when value drops BELOW the limit
+        // True = alarm se aktivira kad vrednost pređe iznad granice
+        // False = alarm se aktivira kad vrednost padne ispod granice
         public bool IsHighAlarm { get; set; } = true;
 
         public string Message { get; set; } = "";
@@ -42,9 +42,9 @@ namespace DataConcentrator
     // Enum stanja alarma
     public enum AlarmState
     {
-        Inactive,       // value is within normal range
-        Active,         // alarm threshold crossed, user hasn't seen it yet (red)
-        Acknowledged    // user clicked ACK, but value is still out of range (yellow)
+        Inactive,       // vrednost je u normalnom opsegu
+        Active,         // granica pređena, korisnik još nije potvrdio (crveno)
+        Acknowledged    // korisnik potvrdio, ali vrednost i dalje van opsega (žuto)
     }
 
     // Zapis aktiviranog alarma koji se upisuje u bazu prilikom pokretanja alarma.
@@ -54,10 +54,10 @@ namespace DataConcentrator
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int    AlarmId     { get; set; }   // which alarm definition triggered
-        public string TagName     { get; set; }   // the AI tag that was out of range
-        public string Message     { get; set; }   // alarm message at the time of firing
-        public DateTime Timestamp { get; set; }   // when it happened
+        public int    AlarmId     { get; set; }   // koja definicija alarma je aktivirana
+        public string TagName     { get; set; }   // koji AI tag je bio van opsega
+        public string Message     { get; set; }   // poruka alarma u trenutku aktiviranja
+        public DateTime Timestamp { get; set; }   // kada se desilo
     }
 
     // Zapis vrednosti taga koji se čuva pri promeni vrednosti AI taga.

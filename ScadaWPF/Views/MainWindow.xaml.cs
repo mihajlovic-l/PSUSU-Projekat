@@ -99,7 +99,7 @@ namespace ScadaWPF.Views
         // Klik na prazno mesto u listi tagova -> poništi selekciju
         private void TagList_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            // HitTest the click point — if it didn't land on a ListViewItem, deselect
+            // Proveri klik — ako nije pogodio stavku liste, poništi selekciju
             var hit = System.Windows.Media.VisualTreeHelper.HitTest(TagList, e.GetPosition(TagList));
             if (hit == null) return;
 
@@ -113,7 +113,7 @@ namespace ScadaWPF.Views
             }
         }
 
-        // Walk up the visual tree to find a parent of type T
+        // Traži roditeljski element datog tipa u vizuelnom stablu
         private static T FindAncestor<T>(System.Windows.DependencyObject current)
             where T : System.Windows.DependencyObject
         {

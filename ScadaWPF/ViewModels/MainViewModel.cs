@@ -43,7 +43,7 @@ namespace ScadaWPF.ViewModels
         // Obrada događaja alarma (prikaz poruke na UI)
         private void OnAlarmRaised(object sender, AlarmRaisedEventArgs e)
         {
-            // Read the alarm from the DB on the UI thread and show it
+            // Pročitaj alarm i prikaži poruku na UI niti
             Application.Current.Dispatcher.Invoke(() =>
             {
                 var alarm = Alarms.FirstOrDefault(a => a.Id == e.AlarmId);

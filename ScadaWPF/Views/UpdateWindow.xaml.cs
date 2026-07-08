@@ -178,7 +178,7 @@ namespace ScadaWPF.Views
             TagManager.Instance.UpdateAlarm(_alarm);
         }
 
-        // ── Validation helpers ────────────────────────────────────────────────
+        // Pomoćne metode za validaciju unosa
 
         private double RequireDouble(TextBox tb, string fieldName)
         {

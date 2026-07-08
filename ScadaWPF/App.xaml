@@ -19,10 +19,10 @@
             <!-- Stilovi dugmadi -->
             <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}"/>
 
-            <!-- Secondary / less prominent action -> outlined Material button -->
+            <!-- Sekundarna akcija - manje istaknuto dugme -->
             <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignOutlinedButton}"/>
 
-            <!-- Destructive action -> filled button recoloured to the danger palette -->
+            <!-- Destruktivna akcija - dugme obojeno bojom opasnosti -->
             <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                 <Setter Property="Background"  Value="{StaticResource DangerBrush}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource DangerBrush}"/>

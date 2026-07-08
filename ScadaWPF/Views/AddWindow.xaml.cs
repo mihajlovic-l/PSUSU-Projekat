@@ -262,7 +262,7 @@ namespace ScadaWPF.Views
             string name = RequireText(TxtName, "Tag Name");
             CheckNameUnique(name);
 
-            // Only 0 or 1 accepted — RequireDigitalValue throws on anything else
+            // Prihvata se samo 0 ili 1 — RequireDigitalValue baca izuzetak za ostalo
             bool initVal = RequireDigitalValue(TxtInitialValue, "Initial Value");
 
             var tag = new DigitalOutput

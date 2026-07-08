@@ -46,3 +46,15 @@ E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat\PLCSimulator\obj\Debug\PLC
 E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat\PLCSimulator\obj\Debug\PLCSimul.7DFBA356.Up2Date
 E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat\PLCSimulator\obj\Debug\PLCSimulator.dll
 E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat\PLCSimulator\obj\Debug\PLCSimulator.pdb
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\PLCSimulator.dll.config
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\PLCSimulator.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\PLCSimulator.pdb
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\EntityFramework.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\EntityFramework.SqlServer.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\EntityFramework.xml
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\bin\Debug\EntityFramework.SqlServer.xml
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\obj\Debug\PLCSimulator.csproj.AssemblyReference.cache
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\obj\Debug\PLCSimulator.csproj.CoreCompileInputs.cache
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\obj\Debug\PLCSimul.7DFBA356.Up2Date
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\obj\Debug\PLCSimulator.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\PLCSimulator\obj\Debug\PLCSimulator.pdb

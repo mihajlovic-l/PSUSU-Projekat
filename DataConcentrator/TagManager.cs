@@ -13,7 +13,7 @@ namespace DataConcentrator
 
     public class TagManager
     {
-        // Singleton instance
+        // Singleton instanca
         private static TagManager _instance;
         public  static TagManager Instance =>
             _instance ?? (_instance = new TagManager());
@@ -220,13 +220,13 @@ namespace DataConcentrator
                 var existing = ctx.Alarms.Find(updated.Id);
                 if (existing == null) return;
 
-                // Update only the editable fields — Id and TagName stay fixed
+                // Ažuriraj samo polja koja se mogu menjati — Id i TagName ostaju fiksni
                 existing.Limit       = updated.Limit;
                 existing.IsHighAlarm = updated.IsHighAlarm;
                 existing.Message     = updated.Message;
                 ctx.SaveChanges();
 
-                // Sync the in-memory collection so the UI reflects the change
+                // Osveži kolekciju u memoriji da bi UI prikazao promenu
                 var mem = Alarms.FirstOrDefault(a => a.Id == updated.Id);
                 if (mem != null)
                 {

@@ -45,7 +45,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="FormPanel" Margin="0,0,0,8">
 
-                <!-- ═══ Shared fields (all tag types) ════════════════════════ -->
+                <!-- Zajednička polja za sve tipove tagova -->
                 <StackPanel x:Name="PanelShared">
                     <Label Content="Tag Name *" FontWeight="SemiBold"/>
                     <TextBox x:Name="TxtName"
@@ -55,14 +55,13 @@
                     <TextBox x:Name="TxtDescription"
                              Margin="0,0,0,18"/>
 
-                    <!-- I/O Address is populated in code-behind based on tag type,
-                         showing only valid + available addresses -->
+                    <!-- I/O adresa se popunjava u kodu prema tipu taga -->
                     <Label Content="I/O Address *" FontWeight="SemiBold"/>
                     <ComboBox x:Name="CboAddress"
                               Margin="0,0,0,18"/>
                 </StackPanel>
 
-                <!-- ═══ Input-tag fields (AI + DI) ═══════════════════════════ -->
+                <!-- Polja za ulazne tagove (AI + DI) -->
                 <StackPanel x:Name="PanelInput" Visibility="Visible">
                     <Label Content="Scan Time (ms) *" FontWeight="SemiBold"/>
                     <TextBox x:Name="TxtScanTime" Text="1000"
@@ -72,7 +71,7 @@
                               IsChecked="True" Margin="0,0,0,18"/>
                 </StackPanel>
 
-                <!-- ═══ Analog fields (AI + AO) ══════════════════════════════ -->
+                <!-- Analogna polja (AI + AO) -->
                 <StackPanel x:Name="PanelAnalog" Visibility="Visible">
                     <Label Content="Low Limit *" FontWeight="SemiBold"/>
                     <TextBox x:Name="TxtLow" Text="0"
@@ -87,7 +86,7 @@
                              Margin="0,0,0,18"/>
                 </StackPanel>
 
-                <!-- ═══ AI-only fields (Deadband + Hysteresis) ═══════════════ -->
+                <!-- Polja samo za AI (Deadband + Hysteresis) -->
                 <StackPanel x:Name="PanelAiOnly" Visibility="Visible">
                     <Label Content="Deadband *" FontWeight="SemiBold"/>
                     <TextBox x:Name="TxtDeadband" Text="0"
@@ -98,14 +97,14 @@
                              Margin="0,0,0,18"/>
                 </StackPanel>
 
-                <!-- ═══ Output initial value (AO + DO) ═══════════════════════ -->
+                <!-- Početna vrednost izlaza (AO + DO) -->
                 <StackPanel x:Name="PanelOutput" Visibility="Collapsed">
                     <Label Content="Initial Value *" FontWeight="SemiBold"/>
                     <TextBox x:Name="TxtInitialValue" Text="0"
                              Margin="0,0,0,18"/>
                 </StackPanel>
 
-                <!-- ═══ Alarm-specific fields ═════════════════════════════════ -->
+                <!-- Polja specifična za alarm -->
                 <StackPanel x:Name="PanelAlarm" Visibility="Collapsed">
                     <Label Content="AI Tag Name *" FontWeight="SemiBold"/>
                     <ComboBox x:Name="CboAlarmTag"

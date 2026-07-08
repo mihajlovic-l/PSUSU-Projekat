@@ -26,14 +26,14 @@ namespace DataConcentrator
             set { description = value; OnPropertyChanged("Description"); }
         }
 
-        // I/O address maps this tag to a slot in the PLC simulator
+        // I/O adresa povezuje ovaj tag sa slotom u PLC simulatoru
         public string IOAddress
         {
             get { return ioAddress; }
             set { ioAddress = value; OnPropertyChanged("IOAddress"); }
         }
 
-        // Discriminator column so EF can store all tag subtypes in one table (TPH)
+        // Diskriminator kolona da EF može da smesti sve podtipove u istu tabelu
         public string TagType { get; set; }
 
         #region INotifyPropertyChanged

@@ -32,7 +32,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Decimal value -->
+                <!-- Decimalna vrednost -->
                 <TextBlock Grid.Row="0" Grid.Column="0"
                            Text="Traceword (decimal)" FontSize="12"
                            Foreground="{DynamicResource MaterialDesignBodyLight}"
@@ -42,7 +42,7 @@
                            FontSize="20" FontWeight="Medium"
                            HorizontalAlignment="Right"/>
 
-                <!-- Binary representation -->
+                <!-- Binarni prikaz -->
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="Traceword (binary)" FontSize="12"
                            Foreground="{DynamicResource MaterialDesignBodyLight}"
@@ -59,11 +59,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
 
-                <!--
-                    Each CheckBox.IsChecked binds two-way to a bool property in
-                    TraceSettingsViewModel. Changing the checkbox instantly calls
-                    Logger.SetBit and persists the new traceword to disk.
-                -->
+                <!-- Svaki checkbox je vezan za bool svojstvo u ViewModel-u; promena odmah upisuje bit -->
 
                 <!-- Bit 0 -->
                 <materialDesign:Card Padding="12,8" Margin="0,0,0,8" UniformCornerRadius="4"
