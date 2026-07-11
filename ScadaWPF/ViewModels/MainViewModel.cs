@@ -124,7 +124,7 @@ namespace ScadaWPF.ViewModels
                     $"Report_{DateTime.Now:yyyyMMdd_HHmmss}.txt");
 
                 File.WriteAllText(path, content);
-                Logger.Log(TraceCategory.ImportExport, $"REPORT_GENERATED path={path}");
+                Logger.Log(TraceCategory.ImportExport, $"REPORT_GENERATED at {path}");
                 MessageBox.Show($"Report saved to:\n{path}", "Report Generated",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }

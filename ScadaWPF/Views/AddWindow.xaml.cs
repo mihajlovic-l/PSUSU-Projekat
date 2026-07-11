@@ -10,7 +10,7 @@ namespace ScadaWPF.Views
 {
     public partial class AddWindow : Window
     {
-        // Dozvoljene adrese po tipu taga (mora da se poklapa sa PLCSimulator)
+        // Dozvoljene adrese po tipu taga
         private static readonly List<string> AI_ADDRESSES =
             new List<string> { "ADDR001", "ADDR002", "ADDR003", "ADDR004" };
         private static readonly List<string> AO_ADDRESSES =

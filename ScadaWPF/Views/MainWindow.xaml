@@ -40,10 +40,10 @@
                         Click="BtnDetails_Click" Margin="0,0,8,0"/>
                 <Button Content="✕ Remove Tag"
                         Style="{StaticResource DangerButton}"
-                        Click="BtnRemoveTag_Click" Margin="0,0,16,0"/>
+                        Click="BtnRemoveTag_Click" Margin="0,0,14,0"/>
 
                 <Separator Style="{StaticResource MaterialDesignSeparator}"
-                           Width="1" Margin="0,0,16,0"/>
+                           Width="1" Margin="0,0,14,0"/>
 
                 <!-- Upis u izlaz -->
                 <TextBox x:Name="TxtWriteValue" Width="140" Margin="0,0,8,0"
@@ -58,10 +58,10 @@
                 <!-- Uključi/isključi skeniranje -->
                 <Button Content="Toggle Scan"
                         Style="{StaticResource SecondaryButton}"
-                        Click="BtnToggleScan_Click" Margin="0,0,16,0"/>
+                        Click="BtnToggleScan_Click" Margin="0,0,14,0"/>
 
                 <Separator Style="{StaticResource MaterialDesignSeparator}"
-                           Width="1" Margin="0,0,10,0"/>
+                           Width="1" Margin="0,0,14,0"/>
 
                 <!-- Izveštaj, detalji, podešavanja logovanja -->
                 <Button Content="📄 Report"

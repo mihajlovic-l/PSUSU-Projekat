@@ -9,7 +9,7 @@ namespace DataConcentrator
         Login        = 0,   // bit 0
         AlarmAck     = 1,   // bit 1
         TagAdd       = 2,   // bit 2
-        Update    = 3,   // bit 3
+        Update       = 3,   // bit 3
         ImportExport = 4,   // bit 4
         AlarmRaised  = 5,   // bit 5
         TagWrite     = 6,   // bit 6

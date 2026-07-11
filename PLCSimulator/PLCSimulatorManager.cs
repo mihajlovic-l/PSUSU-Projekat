@@ -26,6 +26,7 @@ namespace PLCSimulator
             addressValues.Add("ADDR002", 0);
             addressValues.Add("ADDR003", 0);
             addressValues.Add("ADDR004", 0);
+            addressValues.Add("ADDR0017", 0);
 
             // Analogni izlazi
             addressValues.Add("ADDR005", 0);

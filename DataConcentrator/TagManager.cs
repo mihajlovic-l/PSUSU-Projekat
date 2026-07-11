@@ -323,7 +323,6 @@ namespace DataConcentrator
                 lines.AppendLine();
             }
 
-            Logger.Log(TraceCategory.ImportExport, "REPORT_GENERATED");
             return lines.ToString();
         }
 

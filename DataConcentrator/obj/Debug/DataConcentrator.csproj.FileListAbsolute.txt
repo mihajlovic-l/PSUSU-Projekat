@@ -43,3 +43,18 @@ E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\Data
 E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\DataConcentrator\obj\Debug\DataConc.AF26BFFF.Up2Date
 E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\DataConcentrator\obj\Debug\DataConcentrator.dll
 E:\Fakultet\8. semestar\PSUSU\Projekat\PSUSU Projekat - Claude komentari v2\DataConcentrator\obj\Debug\DataConcentrator.pdb
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\DataConcentrator.dll.config
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\DataConcentrator.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\DataConcentrator.pdb
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\EntityFramework.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\EntityFramework.SqlServer.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\PLCSimulator.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\PLCSimulator.pdb
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\PLCSimulator.dll.config
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\EntityFramework.xml
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\bin\Debug\EntityFramework.SqlServer.xml
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\obj\Debug\DataConcentrator.csproj.AssemblyReference.cache
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\obj\Debug\DataConcentrator.csproj.CoreCompileInputs.cache
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\obj\Debug\DataConc.AF26BFFF.Up2Date
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\obj\Debug\DataConcentrator.dll
+E:\Fakultet\8. semestar\PSUSU\Projekat\SCADA Application\DataConcentrator\obj\Debug\DataConcentrator.pdb
